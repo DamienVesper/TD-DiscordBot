@@ -1,5 +1,6 @@
 import { bot } from '../index';
 import * as fs from "fs";
+import {BanManager} from '../modules/BanManager';
 
 const config = bot.config;
 
@@ -71,6 +72,9 @@ bot.on(`ready`, async () => {
         }
     })
 
+    
+    let manager = new BanManager;
+    await manager.start()
     console.log(`----------------------------------`);
     console.log(`${bot.user.tag} is online on ${bot.guilds.cache.size} servers!`);
     console.log(`${config.botName} made by ${botOwner.tag} loaded!`);

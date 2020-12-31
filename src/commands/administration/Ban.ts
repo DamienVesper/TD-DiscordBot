@@ -59,23 +59,48 @@ export default class Ban extends Command {
 				let reason
 				if(reasonArr.length > 0) reason = reasonArr.join(" ");
 				else reason = "TOS Violation";
-				console.log(`Time: ${time} || Reason: ${reason} || Username: ${userFound.username}`);
-				/* WIP
+				// console.log(`Time: ${time} || Reason: ${reason} || Username: ${userFound.username}`);
+
 				if(time){
 					let todayTimestamp = Date.now()
 					
 					let millisecondsToAdd = time * 24 * 60 * 60 * 1000
 
 					let finalTime: number = todayTimestamp + millisecondsToAdd;
-					console.log(`${time} || ${todayTimestamp} || ${millisecondsToAdd} || ${finalTime}`);
 
+					let banTimers = JSON.parse(fs.readFileSync('./data/banTimers.json').toString());
+					banTimers[`${userFound.username}`] = finalTime;
+
+					console.log(banTimers)
+					await fs.writeFileSync(`./data/banTimers.json`, JSON.stringify(banTimers, null, 4));
+
+					message.reply(`:white_check_mark: **${userFound.username}** has been banned for **${time}** days!`);
 				}
 				else {
-					userFound.banned = true;
-					userFound.save();
+					let banTimers = JSON.parse(fs.readFileSync('./data/banTimers.json').toString());
+					if(banTimers[`${userFound.username}`]) delete banTimers[`${userFound.username}`];
+					await fs.writeFileSync(`./data/banTimers.json`, JSON.stringify(banTimers, null, 4));
 
-					return message.reply(`:white_check_mark: **${userFound.username}** has been permanently banned!`);
+					 message.reply(`:white_check_mark: **${userFound.username}** has been permanently banned!`);
 				}
-				*/
+
+				userFound.banned = true;
+				userFound.banreason = reason
+				userFound.save();
+
+				let reportEmbed = new Discord.MessageEmbed()
+				.setAuthor("Ban", message.author.displayAvatarURL())
+				.setThumbnail(userFound.avatar_url)
+				.setColor("#800000")
+				.addField("User", `${userFound.username}`)
+				.addField("Moderator", `<@${message.author.id}> (${message.author.tag})`)
+				.setTimestamp()
+				.setFooter('throwdown.tv', message.guild.iconURL())
+				if (time) reportEmbed.addField("Time", `${time} Days`);
+				if(!time) reportEmbed.addField("Time", `Infinite`);
+				if (reason) reportEmbed.addField("Reason", reason);
+				(<Discord.TextChannel> await bot.channels.cache.get("794268909251330120")).send(reportEmbed);
+
+				
 		}
 	}

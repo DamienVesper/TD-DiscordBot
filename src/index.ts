@@ -45,6 +45,7 @@ bot.on("error", async function(error){
   });
 
 
+
 // Attempt to login to the bot
 try{
 	bot.login(bot.config.token);
