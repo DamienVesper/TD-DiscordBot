@@ -92,7 +92,7 @@ export default class Ban extends Command {
 				.setAuthor("Ban", message.author.displayAvatarURL())
 				.setThumbnail(userFound.avatar_url)
 				.setColor("#800000")
-				.addField("User", `${userFound.username}`)
+				.addField("User", `[${userFound.username}](https://throwdown.tv/${userFound.username})`)
 				.addField("Moderator", `<@${message.author.id}> (${message.author.tag})`)
 				.setTimestamp()
 				.setFooter('throwdown.tv', message.guild.iconURL())
