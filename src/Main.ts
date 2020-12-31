@@ -1,6 +1,7 @@
 //Import core Node modules and dependencies
 import Discord, { ClientOptions } from "discord.js";
 import Banlist from './modules/Banlist';
+import mongoose from 'mongoose';
 
 import {bot} from './index';
 
@@ -24,11 +25,13 @@ export class PulsarGuild extends Discord.Guild {
 }
 
 
+
 export default class Main extends Discord.Client {
     config:any;
     owner: string
     botAdmins: string[]
-    pulsarGuilds: Discord.Collection<string, PulsarGuild>
+	pulsarGuilds: Discord.Collection<string, PulsarGuild>
+
 
     constructor(clientOptions?:ClientOptions){
 		//Call the superclass
@@ -39,14 +42,13 @@ export default class Main extends Discord.Client {
         this.owner = this.config.botOwner;
 		this.botAdmins = this.config.botAdmins;
 		this.pulsarGuilds = new Discord.Collection();
-    }
+	}
 
     async fetchUser(userID: string): Promise<Discord.User> {
         let user = await this.users.fetch(userID) || null;
         if(user) return user
         else return null;
 
-    }
-
+	}
 
 }
