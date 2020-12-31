@@ -259,7 +259,7 @@ export default class Interpreter {
 				}
 				else {
 					//Report the generic error to the user
-					message.reply(`Listen idiot! An error occurred while running command "${args[0]}". Error details: \`${error.name} - ${error.message}\`. Try your entry again when Main is not busy. Shoo, shoo!`);
+					message.reply(`An error occurred while running command "${args[0]}". Error details: \`${error.name} - ${error.message}\`. Try again later.`);
 
 					//Report the error to the console
 					this.cmdConsole.out(error);
