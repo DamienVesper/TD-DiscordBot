@@ -1,4 +1,4 @@
-let dbPassword = 'mongodb+srv://admin:'+ encodeURIComponent('jy258On88UvIiOyu') + '@throwdowntv.php4l.mongodb.net/throwdown?retryWrites=true&w=majority';
+let dbPassword = 'mongodb://throwdown:adc71a12432bf13f51cf010707e80b15@144.91.76.32/admin';
 
 export = {
     mongoURI: dbPassword
