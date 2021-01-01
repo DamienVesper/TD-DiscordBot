@@ -32,7 +32,7 @@ export default class VIPManage extends Command {
 		false, //DELETE ON FINISH
 		true, //SIMULATE TYPING
 		500, //SPAM TIMEOUT
-		["premiummanage", "givevip", "takevip"] //ALIASES
+		["premiummanage", "givevip", "takevip", "vip"] //ALIASES
 	);
 
 	/**

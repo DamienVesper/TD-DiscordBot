@@ -32,7 +32,7 @@ export default class StaffManage extends Command {
 		false, //DELETE ON FINISH
 		true, //SIMULATE TYPING
 		500, //SPAM TIMEOUT
-		["givestaff"] //ALIASES
+		["givestaff", "staff"] //ALIASES
 	);
 
 	/**

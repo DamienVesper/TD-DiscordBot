@@ -32,7 +32,7 @@ export default class VerifyUserEmail extends Command {
 		false, //DELETE ON FINISH
 		true, //SIMULATE TYPING
 		500, //SPAM TIMEOUT
-		["verifyemail"] //ALIASES
+		["verifyemail", "email"] //ALIASES
 	);
 
 	/**

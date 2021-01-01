@@ -32,7 +32,7 @@ export default class StreamManage extends Command {
 		false, //DELETE ON FINISH
 		true, //SIMULATE TYPING
 		500, //SPAM TIMEOUT
-		["allowstream"] //ALIASES
+		["allowstream", "stream"] //ALIASES
 	);
 
 	/**
