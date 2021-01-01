@@ -60,7 +60,7 @@ export default class StreamManage extends Command {
 				userFound.save();
 			}
 			
-			return message.reply(`:white_check_mark: Updated stream ability status of **${userFound.username}** to **${userFound.isStaff}**`)
+			return message.reply(`:white_check_mark: Updated stream ability status of **${userFound.username}** to **${userFound.can_stream}**`)
 
 		}
 	}
