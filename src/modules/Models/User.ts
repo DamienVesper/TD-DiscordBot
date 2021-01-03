@@ -26,6 +26,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: uniqueString()
     },
+    chat_key: {
+        type: String,
+        default: uniqueString()+uniqueString()
+    },
     stream_title: {
         type: String,
         default: "My cool stream :)"
