@@ -96,6 +96,9 @@ const UserSchema = new mongoose.Schema({
     },
     ips: {
         type: Array
+    },
+    banlist: {
+        type: Array
     }
 });
 
