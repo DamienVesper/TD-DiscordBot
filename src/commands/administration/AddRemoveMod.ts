@@ -49,16 +49,30 @@ export default class AddRemoveMod extends Command {
 			let firstUser: any = await User.findOne({username: args[0]});
 			if(!firstUser) return message.channel.send(`:x: The username you provided was invalid!`);
 
-			let removeElement = function(arrayinput, elementstoremove) {
-				var what, a = arguments, L = a.length, ax;
-				while (L && this.length) {
-					what = a[--L];
-					while ((ax = this.indexOf(what)) !== -1) {
-						this.splice(ax, 1);
-					}
+			async function asyncForEach<T>(array:T[], callback:any): Promise<void> {
+				for(let index = 0; index<array.length; index++){
+					await callback(array[index], index, array);
 				}
-				return this;
-			};
+			}
+			
+			async function removeElement(array, elementToRemove) {
+				let i = 0;
+				let emptyArr = [];
+				await asyncForEach(array, item => {
+					if(elementToRemove == item) emptyArr.push(i);
+					i++
+				});
+			
+				await asyncForEach(emptyArr, item => {
+					if (item > -1) {
+						array.splice(item, 1);
+					  }
+				})
+			
+				return;
+			
+			}
+			
 
 			let userFound: any = await User.findOne({username: args[1]});
 			if(!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
