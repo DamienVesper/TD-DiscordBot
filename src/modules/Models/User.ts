@@ -1,5 +1,13 @@
 import mongoose from 'mongoose'
-import uniqueString from 'unique-string';
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
 
 //DB
 let db = require('../keys').mongoURI;
@@ -24,11 +32,11 @@ const UserSchema = new mongoose.Schema({
     },
     stream_key: {
         type: String,
-        default: uniqueString()
+        default: makeid(32)
     },
     chat_key: {
         type: String,
-        default: uniqueString()+uniqueString()
+        default: makeid(64)
     },
     stream_title: {
         type: String,
@@ -44,7 +52,7 @@ const UserSchema = new mongoose.Schema({
     },
     email_verification_key: {
         type: String,
-        default: uniqueString()
+        default: makeid(32)
     },
     verification_status: {
         type: Boolean,
