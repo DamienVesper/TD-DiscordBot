@@ -52,15 +52,15 @@ export default class VerifyUserEmail extends Command {
 			if(!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
 
 			if(args[0].toLowerCase() == "true"){
-				userFound.verification_status = true;
+				userFound.verified = true;
 				userFound.save();
 			}
 			else {
-				userFound.verification_status = false;
+				userFound.verified = false;
 				userFound.save();
 			}
 			
-			return message.reply(`:white_check_mark: Updated email verification status of **${userFound.username}** to **${userFound.verification_status}**`)
+			return message.reply(`:white_check_mark: Updated email verification status of **${userFound.username}** to **${userFound.verified}**`)
 
 		}
 	}

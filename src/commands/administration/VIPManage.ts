@@ -52,15 +52,15 @@ export default class VIPManage extends Command {
 			if(!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
 
 			if(args[0].toLowerCase() == "give"){
-				userFound.isVip = true;
+				userFound.perms.vip = true;
 				userFound.save();
 			}
 			else {
-				userFound.isVip = false;
+				userFound.perms.vip = false;
 				userFound.save();
 			}
 			
-			return message.reply(`:white_check_mark: Updated VIP status of **${userFound.username}** to **${userFound.isVip}**`)
+			return message.reply(`:white_check_mark: Updated VIP status of **${userFound.username}** to **${userFound.perms.vip}**`)
 
 		}
 	}

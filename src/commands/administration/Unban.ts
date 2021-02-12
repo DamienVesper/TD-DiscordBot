@@ -60,8 +60,7 @@ export default class Ban extends Command {
 			    message.reply(`:white_check_mark: **${userFound.username}** has been unbanned!`);
 	
 
-				userFound.banned = false;
-				userFound.banreason = "TOS Violation"
+				userFound.isSuspended = false;
 				userFound.save();
 
 				let reportEmbed = new Discord.MessageEmbed()

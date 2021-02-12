@@ -61,7 +61,7 @@ export default class ResetStreamKey extends Command {
 
 			 let newstreamKey = await makeid(32)
 
-			 userFound.stream_key = newstreamKey;
+			 userFound.settings.streamKey = newstreamKey;
 			 userFound.save();
 
 			 return message.reply(`:white_check_mark: Reset the stream key of **${args[0]}**`);

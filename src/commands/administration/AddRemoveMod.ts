@@ -77,13 +77,13 @@ export default class AddRemoveMod extends Command {
 			let userFound: any = await User.findOne({username: args[1]});
 			if(!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
 
-			if(firstUser.moderators.includes(userFound.username)){
-				firstUser.moderators = await removeElement(firstUser.moderators, userFound.username);
+			if(firstUser.channel.moderators.includes(userFound.username)){
+				firstUser.channel.moderators = await removeElement(firstUser.channel.moderators, userFound.username);
 				firstUser.save();
 				return message.reply(`:white_check_mark: Removed moderator ranking to **${userFound.username}** for channel **${firstUser.username}**`)
 			}
 			else {
-				firstUser.moderators.push(userFound.username);
+				firstUser.channel.moderators.push(userFound.username);
 				firstUser.save();
 				return message.reply(`:white_check_mark: Gave moderator ranking to **${userFound.username}** for channel **${firstUser.username}**`)
 			}

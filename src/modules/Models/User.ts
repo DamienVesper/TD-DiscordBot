@@ -18,100 +18,122 @@ mongoose.connect(
 			
 
 const UserSchema = new mongoose.Schema({
+
     username: {
         type: String,
-        required: true
+        required: true,
+        unique: true
+    },
+    displayName: {
+        type: String,
+        required: true,
+        unique: true
     },
     email: {
         type: String,
+        required: false,
+        unique: true
+    },
+    creationIP: {
+        type: String,
+        required: false
+    },
+    lastIP: {
+        type: String,
+        required: false
+    },
+    creationDate: {
+        type: Date,
         required: true
+    },
+    token: {
+        type: String,
+        default: makeid(64),
+        required: false
     },
     password: {
         type: String,
         required: true
     },
-    stream_key: {
+    live: {
         type: String,
-        default: makeid(32)
+        default: false,
+        required: false
     },
-    chat_key: {
-        type: String,
-        default: makeid(64)
-    },
-    stream_title: {
-        type: String,
-        default: "My cool stream :)"
-    },
-    stream_description: {
-        type: String,
-        default: "Description of my cool stream :)"
-    },
-    avatar_url: {
-        type: String,
-        default: "https://cdn.discordapp.com/attachments/736368923590525039/789419292214820894/defaulltpfp.png"
-    },
-    email_verification_key: {
-        type: String,
-        default: makeid(32)
-    },
-    verification_status: {
+    verified: {
         type: Boolean,
-        default: false
+        required: false
     },
-    donation_link: {
+    verifyToken: {
         type: String,
-        default: "/streams/donate"
+        required: false
     },
-    can_stream: {
+    isSuspended: {
         type: Boolean,
-        default: false
+        default: false,
+        required: false
     },
-    banned: {
-        type: Boolean,
-        default: false
-    },
-    banreason: {
+    avatarURL: {
         type: String,
-        default: "TOS Violation"
+        default: `/assets/uploads/defaultpfp.png`,
+        required: false
     },
-    following: {
+    channel: {
+        moderators: {
+            type: Array,
+            default: [],
+            required: false
+        },
+        bans: {
+            type: Array,
+            default: [],
+            required: false
+        }
+    },
+    perms: {
+        staff: {
+            type: Boolean,
+            default: false,
+            required: false
+        },
+        vip: {
+            type: Boolean,
+            default: false,
+            required: false
+        }
+    },
+    settings: {
+        streamKey: {
+            type: String,
+            default: makeid(32),
+            required: false
+        },
+        title: {
+            type: String,
+            default: `My Cool Stream!`,
+            required: false
+        },
+        description: {
+            type: String,
+            default: `A description about my cool stream!`,
+            required: false
+        },
+        donationLink: {
+            type: String,
+            default: `/streams/donate`,
+            required: false
+        }
+    },
+    viewers: {
         type: Array,
+        default: [],
+        required: false
     },
     followers: {
         type: Array,
-    },
-    live_viewers: {
-        default: 0
-    },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-    discordID: {
-        type: String,
-        default: "YOUR_DISCORD_ID_HERE"
-    },
-    isVip: {
-        type: Boolean,
-        default: false
-    },
-    isStaff: {
-        type: Boolean,
-        default: false
-    },
-    moderators: {
-        type: Array
-    },
-    ips: {
-        type: Array
-    },
-    banlist: {
-        type: Array
-    },
-    banned_words: {
-        type: Array
+        default: [],
+        required: false
     }
-
 });
 
 const User = mongoose.model('User', UserSchema);

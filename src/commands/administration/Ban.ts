@@ -84,8 +84,7 @@ export default class Ban extends Command {
 					 message.reply(`:white_check_mark: **${userFound.username}** has been permanently banned!`);
 				}
 
-				userFound.banned = true;
-				userFound.banreason = reason
+				userFound.isSuspended = true;
 				userFound.save();
 
 				let reportEmbed = new Discord.MessageEmbed()

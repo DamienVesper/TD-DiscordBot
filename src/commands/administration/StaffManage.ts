@@ -52,11 +52,11 @@ export default class StaffManage extends Command {
 			if(!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
 
 			if(args[0].toLowerCase() == "give"){
-				userFound.isStaff = true;
+				userFound.perms.staff = true;
 				userFound.save();
 			}
 			else {
-				userFound.isStaff = false;
+				userFound.perms.staff = false;
 				userFound.save();
 			}
 			
