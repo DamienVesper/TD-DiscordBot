@@ -49,7 +49,7 @@ export default class StaffManage extends Command {
 			if(args[0].toLowerCase() !== "give" && args[0].toLowerCase() !== "take") return message.reply(":x: Your first argument has to be \`give\` or \`take\`!");
 
 			let userFound: any = await User.findOne({username: args[1].toLowerCase()});
-			if(!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
+			if(!userFound) return message.channel.send(`:x: The username you provided was invalid or does not exist!`);
 
 			if(args[0].toLowerCase() == "give"){
 				userFound.perms.staff = true;
