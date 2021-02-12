@@ -60,7 +60,7 @@ export default class StaffManage extends Command {
 				userFound.save();
 			}
 			
-			return message.reply(`:white_check_mark: Updated Staff status of **${userFound.username}** to **${userFound.isStaff}**`)
+			return message.reply(`:white_check_mark: Updated Staff status of **${userFound.username}** to **${userFound.perms.staff}**`)
 
 		}
 	}
