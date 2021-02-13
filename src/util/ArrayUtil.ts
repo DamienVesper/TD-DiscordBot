@@ -8,9 +8,9 @@ import MathUtil from "./MathUtil";
  */
 export default class ArrayUtil {
     /**
-	 * Picks a random array element
-	 * @param targetArr The array to fetch the random element from
-	 */
+     * Picks a random array element
+     * @param targetArr The array to fetch the random element from
+     */
     public static getRandomArrElem<T> (targetArr:T[]):T {
         // Pick a random number between 0 and the size of the array
         const randomIndex:number = (MathUtil.getRandomInt(0, (targetArr.length - 1)));
@@ -20,12 +20,12 @@ export default class ArrayUtil {
     }
 
     /**
-	 * Checks if a given object is an array
-	 * of a certain datatype
-	 * @param targetObj The object to test
-	 * @param expectedType The expected datatype that all elements must be
-	 * @return <b>boolean</b> Whether the object is an array and all elements are of the expected datatype
-	 */
+     * Checks if a given object is an array
+     * of a certain datatype
+     * @param targetObj The object to test
+     * @param expectedType The expected datatype that all elements must be
+     * @return <b>boolean</b> Whether the object is an array and all elements are of the expected datatype
+     */
     public static isArrayOf (targetObj:any, expectedType:string|any):boolean {
         // Check if the object is an array
         if (Array.isArray(targetObj)) {
@@ -61,11 +61,11 @@ export default class ArrayUtil {
     }
 
     /**
-	 * Constructs a list of the items in
-	 * an array, in string form
-	 * @param targetArr The array to pull the items from
-	 * @param delim The separator to use in between each element
-	 */
+     * Constructs a list of the items in
+     * an array, in string form
+     * @param targetArr The array to pull the items from
+     * @param delim The separator to use in between each element
+     */
     public static toList<T> (targetArr:T[], delim:string):string {
         // Create a string to hold the array elements
         let arrayListing:string = ``;
