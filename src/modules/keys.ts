@@ -1,4 +1,4 @@
-let dbPassword = 'mongodb://localhost:27017/throwdownTV';
+const dbPassword = `mongodb://localhost:27017/throwdownTV`;
 
 export = {
     mongoURI: dbPassword

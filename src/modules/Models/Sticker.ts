@@ -20,5 +20,5 @@ const stickerSchema = new mongoose.Schema({
     }
 });
 
-let Sticker = mongoose.model(`Sticker`, stickerSchema);
+const Sticker = mongoose.model(`Sticker`, stickerSchema);
 export default Sticker;

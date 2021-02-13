@@ -1,7 +1,7 @@
-//Import first-party classes
+// Import first-party classes
 import Main from "../../Main";
 
-//Import core Node modules and dependencies
+// Import core Node modules and dependencies
 import Discord from 'discord.js';
 
 /**
@@ -11,11 +11,11 @@ import Discord from 'discord.js';
  */
 export default interface ICommand {
 	/**
-	 * Runs the main payload of the command 
+	 * Runs the main payload of the command
 	 * class that implements this interface.
 	 * IMPORTANT: To maintain asynchronous
 	 * flow, this function should be made
-	 * async in all implemented command 
+	 * async in all implemented command
 	 * subclasses
 	 * @param botClient The instance of the bot client
 	 * @param message The message object that the sender used to call the command
@@ -24,4 +24,4 @@ export default interface ICommand {
 	 * @return </b>Promise<T></b> The status as to whether the command executed successfully or not
 	 */
 	run<T>(botClient:Main, message:Discord.Message, args:string[], calledName:string):Promise<T>;
-}
+};

@@ -1,21 +1,20 @@
-import mongoose from 'mongoose'
-function makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+import mongoose from 'mongoose';
+function makeid (length) {
+    let result = ``;
+    const characters = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`;
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
- }
+}
 
-//DB
-let db = require('../keys').mongoURI;
+// DB
+const db = require(`../keys`).mongoURI;
 mongoose.connect(
-	db,
-	{ useNewUrlParser: true ,useUnifiedTopology: true}
-	).catch(err => console.log(err));
-			
+    db,
+    { useNewUrlParser: true, useUnifiedTopology: true }
+).catch(err => console.log(err));
 
 const UserSchema = new mongoose.Schema({
 
@@ -136,6 +135,6 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model(`User`, UserSchema);
 
 export default User;

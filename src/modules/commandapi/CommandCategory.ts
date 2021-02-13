@@ -29,7 +29,7 @@ export enum CommandCategory {
 	UTILITY
 }
 
-//Enum utilties (must be exported under the namespace header)
+// Enum utilties (must be exported under the namespace header)
 export namespace CommandCategory {
 	/**
  	 * Creates a grammatical list of the
@@ -37,30 +37,30 @@ export namespace CommandCategory {
  	 * @author Spotlightsrule
 	 * @return <b>string</b> The list of the enum's contents
  	*/
-	export function values():string {
-		//Create a string to hold the list of enum values
-		let enumValues:string = "";
+	export function values ():string {
+	    // Create a string to hold the list of enum values
+	    let enumValues:string = ``;
 
-		//Get the number of elements in the enum
-		//SEE: https://stackoverflow.com/a/54341904/7520602
-		let enumLen:number = (Object.keys(CommandCategory).map((val, idx) => Number(isNaN(Number(val)))).reduce((a, b) => a + b, 0));
+	    // Get the number of elements in the enum
+	    // SEE: https://stackoverflow.com/a/54341904/7520602
+	    const enumLen:number = (Object.keys(CommandCategory).map((val, idx) => Number(isNaN(Number(val)))).reduce((a, b) => a + b, 0));
 
-		//Loop over the enum
-		for(let category in CommandCategory){
-			//Check if the current category is an index
-			if(parseInt(category, 10) >= 0){
-				//Append it onto the enum list
-				enumValues += (`${CommandCategory[category]}`);
+	    // Loop over the enum
+	    for (const category in CommandCategory) {
+	        // Check if the current category is an index
+	        if (parseInt(category, 10) >= 0) {
+	            // Append it onto the enum list
+	            enumValues += (`${CommandCategory[category]}`);
 
-				//Ensure that the current enum value is not at the end of the list
-				if(parseInt(category) < (enumLen - 2)){
-					//Append a delimiter onto the string
-					enumValues += (", ");
-				}
-			}
-		}
+	            // Ensure that the current enum value is not at the end of the list
+	            if (parseInt(category) < (enumLen - 2)) {
+	                // Append a delimiter onto the string
+	                enumValues += (`, `);
+	            }
+	        }
+	    }
 
-		//Return the filled enum values list
-		return enumValues;
+	    // Return the filled enum values list
+	    return enumValues;
 	}
 }

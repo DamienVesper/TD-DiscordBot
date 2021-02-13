@@ -1,4 +1,4 @@
-//Import first-party classes
+// Import first-party classes
 import { CommandCategory } from "./CommandCategory";
 
 /**
@@ -7,7 +7,7 @@ import { CommandCategory } from "./CommandCategory";
  * @author Spotlightsrule
  */
 export default interface ICommandField {
-	//Set implementable variables
+	// Set implementable variables
 	/**
 	 * Defines the name of the command
 	 */
@@ -19,8 +19,8 @@ export default interface ICommandField {
 	description:string;
 
 	/**
-	 * Defines the usage syntax of the command, 
-	 * where values enclosed in [] are mandatory 
+	 * Defines the usage syntax of the command,
+	 * where values enclosed in [] are mandatory
 	 * and values enclosed in () are optional
 	 */
 	usage:string;
@@ -70,7 +70,7 @@ export default interface ICommandField {
 	permsRequired:string[];
 
 	/**
-	 * Locks down a command such that only the 
+	 * Locks down a command such that only the
 	 * bot owner can use it. Good for commands
 	 * that are meant for internal debugging
 	 * of the bot client
@@ -79,7 +79,7 @@ export default interface ICommandField {
 	ownerOnly:boolean;
 
 	/**
-	 * Locks down a command such that only the 
+	 * Locks down a command such that only the
 	 * bot owner or approved administrators can
 	 * use it. Good for commands that can apply
 	 * multiple servers such as global bans
@@ -88,13 +88,13 @@ export default interface ICommandField {
 	trustedOnly:boolean;
 
 	/**
-	 * Prevents users in this list from executing 
+	 * Prevents users in this list from executing
 	 * the command
 	 */
 	blacklistedUsers:string[];
 
 	/**
-	 * Allows only the guilds in this list to 
+	 * Allows only the guilds in this list to
 	 * execute the command
 	 */
 	whitelistedGuilds:string[];
@@ -108,7 +108,7 @@ export default interface ICommandField {
 
 	/**
 	 * Sets whether or not the command should
-	 * signal in chat that the bot is typing 
+	 * signal in chat that the bot is typing
 	 * something out
 	 */
 	simulateTyping:boolean;
@@ -116,16 +116,16 @@ export default interface ICommandField {
 	/**
 	 * The time in milliseconds that a user must
 	 * wait before using the command again. Senders
-	 * with "manage messages", "manage channels", or 
-	 * "manage guild" permissions can bypass this 
+	 * with "manage messages", "manage channels", or
+	 * "manage guild" permissions can bypass this
 	 * restriction
 	 */
 	spamTimeout:number;
 
 	/**
-	 * OPTIONAL: Defines other names that the 
-	 * command can be called by. Otherwise, 
-	 * what are alternate names that the user 
+	 * OPTIONAL: Defines other names that the
+	 * command can be called by. Otherwise,
+	 * what are alternate names that the user
 	 * can call the command with?
 	 */
 	aliases?:string[];
@@ -136,7 +136,7 @@ export default interface ICommandField {
  * @author Spotlightsrule
  */
 export class CommandField implements ICommandField {
-	//Set command fields
+	// Set command fields
 	public name:string;
 	public description:string;
 	public usage:string;
@@ -174,23 +174,23 @@ export class CommandField implements ICommandField {
 	 * @param spamTimeout Prevents users from running a command more than once in x milliseconds
 	 * @param aliases OPTIONAL: Alternative names that the command can be called by
 	 */
-	constructor(name:string, description:string, usage:string, examples:string[], category:CommandCategory, minArgs:number, maxArgs:number, permsRequired:string[], ownerOnly:boolean, trustedOnly:boolean, blacklistedUsers:string[], whitelistedGuilds:string[], deleteOnFinish:boolean, simulateTyping:boolean, spamTimeout:number, aliases?:string[]){
-		//Assign the command fields
-		this.name = name;
-		this.description = description;
-		this.usage = usage;
-		this.examples = examples;
-		this.category = category;
-		this.minArgs = minArgs;
-		this.maxArgs = maxArgs;
-		this.permsRequired = permsRequired;
-		this.ownerOnly = ownerOnly;
-		this.trustedOnly = trustedOnly;
-		this.blacklistedUsers = blacklistedUsers;
-		this.whitelistedGuilds = whitelistedGuilds;
-		this.deleteOnFinish = deleteOnFinish;
-		this.simulateTyping = simulateTyping;
-		this.spamTimeout = spamTimeout;
-		this.aliases = aliases;
+	constructor (name:string, description:string, usage:string, examples:string[], category:CommandCategory, minArgs:number, maxArgs:number, permsRequired:string[], ownerOnly:boolean, trustedOnly:boolean, blacklistedUsers:string[], whitelistedGuilds:string[], deleteOnFinish:boolean, simulateTyping:boolean, spamTimeout:number, aliases?:string[]) {
+	    // Assign the command fields
+	    this.name = name;
+	    this.description = description;
+	    this.usage = usage;
+	    this.examples = examples;
+	    this.category = category;
+	    this.minArgs = minArgs;
+	    this.maxArgs = maxArgs;
+	    this.permsRequired = permsRequired;
+	    this.ownerOnly = ownerOnly;
+	    this.trustedOnly = trustedOnly;
+	    this.blacklistedUsers = blacklistedUsers;
+	    this.whitelistedGuilds = whitelistedGuilds;
+	    this.deleteOnFinish = deleteOnFinish;
+	    this.simulateTyping = simulateTyping;
+	    this.spamTimeout = spamTimeout;
+	    this.aliases = aliases;
 	}
 }

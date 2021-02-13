@@ -1,4 +1,4 @@
 import Main from '../Main';
 const Pulsar = Main;
 
-export default Pulsar
+export default Pulsar;

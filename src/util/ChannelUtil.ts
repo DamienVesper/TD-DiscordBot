@@ -4,5 +4,5 @@
  * @author Spotlightsrule
  */
 export default class ChannelUtil {
-	
+
 }

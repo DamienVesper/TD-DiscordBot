@@ -7,13 +7,13 @@
  * @author Spotlightsrule
  */
 export default class Quadruple<A, B, C, D> {
-	//Set class variables
+	// Set class variables
 	private elemOne:A;
 	private elemTwo:B;
 	private elemThree:C;
 	private elemFour:D;
-	
-	//Class constructor
+
+	// Class constructor
 	/**
 	 * Constructs a new quadruple given three elements of any type
 	 * @param elemOne Element one of the new quadruple
@@ -21,77 +21,77 @@ export default class Quadruple<A, B, C, D> {
 	 * @param elemThree Element three of the new quadruple
 	 * @param elemFour Element four of the new quadruple
 	 */
-	constructor(elemOne:A, elemTwo:B, elemThree:C, elemFour:D){
-		//Assign the class variables from the constructor's parameters
-		this.elemOne = elemOne;
-		this.elemTwo = elemTwo;
-		this.elemThree = elemThree;
-		this.elemFour = elemFour;
+	constructor (elemOne:A, elemTwo:B, elemThree:C, elemFour:D) {
+	    // Assign the class variables from the constructor's parameters
+	    this.elemOne = elemOne;
+	    this.elemTwo = elemTwo;
+	    this.elemThree = elemThree;
+	    this.elemFour = elemFour;
 	}
 
-	//Getters
+	// Getters
 	/**
 	 * Returns the first quadruple element
 	 * @return <b>A</b> The first element in the quadruple
 	 */
-	public getElemOne():A {
-		return this.elemOne;
+	public getElemOne ():A {
+	    return this.elemOne;
 	}
-	
+
 	/**
 	 * Returns the second quadruple element
 	 * @return <b>B</b> The second element in the quadruple
 	 */
-	public getElemTwo():B {
-		return this.elemTwo;
+	public getElemTwo ():B {
+	    return this.elemTwo;
 	}
-	
+
 	/**
 	 * Returns the third quadruple element
 	 * @return <b>C</b> The third element in the quadruple
 	 */
-	public getElemThree():C {
-		return this.elemThree;
+	public getElemThree ():C {
+	    return this.elemThree;
 	}
 
 	/**
 	 * Returns the fourth quadruple element
 	 * @return <b>D</b> The fourth element in the quadruple
 	 */
-	public getElemFour():D {
-		return this.elemFour;
+	public getElemFour ():D {
+	    return this.elemFour;
 	}
 
-	//Setters
+	// Setters
 	/**
 	 * Sets the contents of the first quadruple element
 	 * @param elemOne The new contents of element one
 	 */
-	public setElemOne(elemOne:A):void {
-		this.elemOne = elemOne;
+	public setElemOne (elemOne:A):void {
+	    this.elemOne = elemOne;
 	}
-	
+
 	/**
 	 * Sets the contents of the second quadruple element
 	 * @param elemTwo The new contents of element two
 	 */
-	public setElemTwo(elemTwo:B):void {
-		this.elemTwo = elemTwo;
+	public setElemTwo (elemTwo:B):void {
+	    this.elemTwo = elemTwo;
 	}
-	
+
 	/**
 	 * Sets the contents of the third quadruple element
 	 * @param elemThree The new contents of element three
 	 */
-	public setElemThree(elemThree:C):void {
-		this.elemThree = elemThree;
+	public setElemThree (elemThree:C):void {
+	    this.elemThree = elemThree;
 	}
 
 	/**
 	 * Sets the contents of the fourth quadruple element
 	 * @param elemFour The new contents of element four
 	 */
-	public setElemFour(elemFour:D):void {
-		this.elemFour = elemFour;
+	public setElemFour (elemFour:D):void {
+	    this.elemFour = elemFour;
 	}
 }
