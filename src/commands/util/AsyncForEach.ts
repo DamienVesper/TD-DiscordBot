@@ -75,7 +75,7 @@ export default class AsyncUtil {
         const files:string[] = (await NFS.readdirSync(tDir));
 
         // Loop over the listing
-          for (const file of files) {
+        for (const file of files) {
             // Stat the current path listing
             const stat:NFS.Stats = (await NFS.statSync(Path.normalize(Path.join(tDir, file))));
 

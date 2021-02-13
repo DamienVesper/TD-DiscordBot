@@ -55,7 +55,7 @@ export default class Ban extends Command {
 
         if (!userFound.banned) return message.reply(`:x: That user is not banned!`);
 
-                message.reply(`:white_check_mark: **${userFound.username}** has been unbanned!`);
+        message.reply(`:white_check_mark: **${userFound.username}** has been unbanned!`);
 
         userFound.isSuspended = false;
         userFound.save();
