@@ -107,7 +107,7 @@ export default class FakeDox extends Command {
 		let doxEmbed:Discord.MessageEmbed = (new Discord.MessageEmbed()
 			.setColor(fakeInfo.color)
 			.setTitle(`(Fake) Dox info for user ${mentioned.tag}`)
-			.setAuthor("Beatrice Doxing API", botClient.user.displayAvatarURL())
+			.setAuthor("Fake Doxing API", botClient.user.displayAvatarURL())
 			.setThumbnail(`${mentioned.avatarURL()}`)
 			.addField("Name", fakeInfo.name)
 			.addField("DOB", fakeInfo.dob)
