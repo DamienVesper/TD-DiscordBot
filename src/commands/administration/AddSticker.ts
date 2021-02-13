@@ -72,6 +72,7 @@ export default class AddSticker extends Command {
 				path: stickerURL,
 				channelsBannedOn: []
 			});
+			console.log(stickerURL)
 			newSticker.save()
 			return message.reply(`:white_check_mark: Added unique sticker name **${stickerName1}** to User ${userFound.username} - URL: ${stickerURL}`);
 		}
