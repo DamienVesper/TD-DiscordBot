@@ -5,12 +5,12 @@
  */
 export default class Spliterator {
     /**
-	 * Splits a string at every whitespace
-	 * character
-	 * @param strIn The string to split
-	 * @return <b>string[]</b> The resulting split array of strings
-	 * @see https://regex101.com/r/DPheU4
-	 */
+     * Splits a string at every whitespace
+     * character
+     * @param strIn The string to split
+     * @return <b>string[]</b> The resulting split array of strings
+     * @see https://regex101.com/r/DPheU4
+     */
     public static split (strIn:string):string[] {
         // Create an array to hold the split string
         const splitStr:string[] = [];
