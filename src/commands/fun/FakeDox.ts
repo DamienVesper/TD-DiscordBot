@@ -184,7 +184,7 @@ export default class FakeDox extends Command {
         let localeInd:number = -1;
 
         // Check if the locale string is defined
-        if ((typeof locale !== null) && (locale)) {
+        if (locale) {
             // Loop over the list of available locales
             for (let i = 0; i < fakerLocales.length; i++) {
                 // Check if the input locale matches the current available locale
