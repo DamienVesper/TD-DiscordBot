@@ -54,16 +54,16 @@ export default class ResetStreamKey extends Command {
             const characters = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`;
             const charactersLength = characters.length;
             for (let i = 0; i < length; i++) {
-                   result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
             }
             return result;
-             }
+        }
 
-             const newstreamKey = await makeid(32);
+        const newstreamKey = await makeid(32);
 
-             userFound.settings.streamKey = newstreamKey;
-             userFound.save();
+        userFound.settings.streamKey = newstreamKey;
+        userFound.save();
 
-             return message.reply(`:white_check_mark: Reset the stream key of **${args[0]}**`);
+        return message.reply(`:white_check_mark: Reset the stream key of **${args[0]}**`);
     }
 }
