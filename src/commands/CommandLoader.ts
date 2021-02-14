@@ -21,16 +21,14 @@ module.exports.loadCommands = () => {
     const commandsToSkip:string[] = [`test`]; // MUST BE IN LOWERCASE
 
     glob(`${__dirname}/**/*.*`, { absolute: false }, (error, files) => {
-        if (error) return error;
-
         files = files.filter(f => !f.endsWith(`.map`));
         if (files.length === 0) return console.log(`[WARNING] Unable to locate any commands. The bot won't be able to respond to requests.`);
         else console.log(chalk.yellow(`[COMMAND] Loading ${files.length} commands...`));
 
         let i:number = 0;
         files.forEach(async filePath => {
-            const fileRegex = /\/{0}([A-z-/\d]){1,100}([^A-z.ts]){1}/g; // converts the whole url path to just commandFileName.ts
-            const fileRegexJS = /\/{0}([A-z-/\d]){1,100}([^A-z.js]){1}/g;
+            const fileRegex = new RegExp(/\/{0}([A-z-/\d]){1,100}([^A-z.ts]){1}/g); // converts the whole url path to just commandFileName.ts
+            const fileRegexJS = new RegExp(/\/{0}([A-z-/\d]){1,100}([^A-z.js]){1}/g);
             const formattedBestCMD:string = null;
 
             if (version == `ts`) filePath.replace(fileRegex, ``);
@@ -47,8 +45,8 @@ module.exports.loadCommands = () => {
                     return;
                 }
             }
-            catch (err) {
-                return err;
+            catch {
+                null;
             }
 
             const cmd = require(filePath);
