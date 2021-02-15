@@ -44,7 +44,7 @@ export default class Ban extends Command {
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
         let time;
-        const userFound: any = await User.findOne({ username: args[0] });
+        const userFound: any = await User.findOne({ username: args[0].toLowerCase() });
         if (!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
 
         if (parseInt(args[args.length - 1])) time = parseInt(args[args.length - 1]);
@@ -81,6 +81,7 @@ export default class Ban extends Command {
         }
 
         userFound.isSuspended = true;
+        userFound.live = false;
         userFound.save();
 
         const reportEmbed = new Discord.MessageEmbed()

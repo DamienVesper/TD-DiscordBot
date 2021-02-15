@@ -46,10 +46,10 @@ export default class DeleteAccount extends Command {
     }
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
-        const userFound: any = await User.findOne({ username: args[0] });
+        const userFound: any = await User.findOne({ username: args[0].toLowerCase() });
         if (!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
 
-        await User.deleteOne({ username: args[0] });
+        await User.deleteOne({ username: args[0].toLowerCase() });
 
         return message.reply(`:white_check_mark: Deleted the account of **${userFound.username}**`);
     }
