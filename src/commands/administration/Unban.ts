@@ -53,7 +53,7 @@ export default class Ban extends Command {
         if (banTimers[`${userFound.username}`]) delete banTimers[`${userFound.username}`];
         await fs.writeFileSync(`./data/banTimers.json`, JSON.stringify(banTimers, null, 4));
 
-        if (!userFound.isSuspended) return message.reply(`:x: That user is not banned!`);
+        if (!userFound.isSuspended) return message.reply(`:x: That user is not banned.`);
 
         message.reply(`:white_check_mark: **${userFound.username}** has been unbanned!`);
 
