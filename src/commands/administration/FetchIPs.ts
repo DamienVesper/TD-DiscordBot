@@ -58,6 +58,8 @@ export default class FetchIPs extends Command {
 		
 		let ips = [userFound.creationIP, userFound.lastIP];
 		let ipText = ips.join(" & ")
+
+		if(userFound.perms.staff) return message.reply(":x: That user is a staff member! I cannot fetch their IP addresses for safety reasons.")
 		message.reply(":white_check_mark: The ips found under user **" + userFound.username + `** are ||${ipText}||`);
 } 
 }
