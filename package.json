@@ -11,27 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ThrowdownTV/ThrowdownTV-Discord-Bot.git"
+    "url": "git+https://github.com/ThrowdownTV/Discord-Bot.git"
   },
-  "author": "sev#0001",
+  "author": "xsev",
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/ThrowdownTV/ThrowdownTV-Discord-Bot/issues"
+    "url": "https://github.com/ThrowdownTV/Discord-Bot/issues"
   },
-  "homepage": "https://github.com/ThrowdownTV/ThrowdownTV-Discord-Bot#readme",
-  "devDependencies": {
-    "@types/jest": "^26.0.0",
-    "@types/node": "^14.0.13",
-    "@typescript-eslint/eslint-plugin": "^4.9.1",
-    "@typescript-eslint/parser": "^4.9.1",
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "tsc-silent": "^1.2.1"
-  },
+  "homepage": "https://github.com/ThrowdownTV/Discord-Bot#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "chalk": "^4.1.0",
@@ -45,5 +32,18 @@
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.3",
     "unique-string": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.21",
+    "@types/node": "^14.14.35",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "tsc-silent": "^1.2.1"
   }
 }
