@@ -34,7 +34,7 @@ export default class FetchEmail extends Command {
         false, // DELETE ON FINISH
         true, // SIMULATE TYPING
         500, // SPAM TIMEOUT
-        ["getemail"] // ALIASES
+        [`getemail`] // ALIASES
     );
 
     /**
@@ -49,15 +49,14 @@ export default class FetchEmail extends Command {
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
         // Assert the argument count
-		super.assertArgCount(args.length, message);
-		
+        super.assertArgCount(args.length, message);
+
         if (message.channel.id !== `794326024858763304`) return message.reply(`:x: This command can only be used in <#794326024858763304>`);
 
         const userFound: any = await User.findOne({ username: args[0] });
-		if (!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
-		
-		let email = userFound.email
-		message.reply(":white_check_mark: The email address for user **" + userFound.username + `** is ||${userFound.email}||`);
+        if (!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
 
-}
+        const email = userFound.email;
+        message.reply(`:white_check_mark: The email address for user **${userFound.username}** is ||${userFound.email}||`);
+    }
 }

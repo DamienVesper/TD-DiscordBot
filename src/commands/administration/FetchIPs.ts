@@ -34,7 +34,7 @@ export default class FetchIPs extends Command {
         false, // DELETE ON FINISH
         true, // SIMULATE TYPING
         500, // SPAM TIMEOUT
-        ["getip", "ips", "ip", "fetchip"] // ALIASES
+        [`getip`, `ips`, `ip`, `fetchip`] // ALIASES
     );
 
     /**
@@ -49,17 +49,17 @@ export default class FetchIPs extends Command {
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
         // Assert the argument count
-		super.assertArgCount(args.length, message);
-		
+        super.assertArgCount(args.length, message);
+
         if (message.channel.id !== `794326024858763304`) return message.reply(`:x: This command can only be used in <#794326024858763304>`);
 
         const userFound: any = await User.findOne({ username: args[0] });
-		if (!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
-		
-		let ips = [userFound.creationIP, userFound.lastIP];
-		let ipText = ips.join(" & ")
+        if (!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
 
-		if(userFound.perms.staff) return message.reply(":x: That user is a staff member! I cannot fetch their IP addresses for safety reasons.")
-		message.reply(":white_check_mark: The ips found under user **" + userFound.username + `** are ||${ipText}||`);
-} 
+        const ips = [userFound.creationIP, userFound.lastIP];
+        const ipText = ips.join(` & `);
+
+        if (userFound.perms.staff) return message.reply(`:x: That user is a staff member! I cannot fetch their IP addresses for safety reasons.`);
+        message.reply(`:white_check_mark: The ips found under user **${userFound.username}** are ||${ipText}||`);
+    }
 }
