@@ -29,7 +29,7 @@ export default class Ban extends Command {
         false, // DELETE ON FINISH
         true, // SIMULATE TYPING
         500, // SPAM TIMEOUT
-        [`banuser`, `banfromsite`, `tempban`, `permban`] // ALIASES
+        [`banuser`, `banfromsite`, `tempban`, `permban`, `suspend`] // ALIASES
     );
 
     /**
