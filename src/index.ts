@@ -43,8 +43,7 @@ bot.on(`shardResume`, async (replayed) => {
 // Attempt to login to the bot
 try {
     bot.login(bot.config.token);
-}
-catch (error) {
+} catch (error) {
     console.log(`[CRITICAL ERROR] There was an error logging into the bot! Stack: ${error.stack} (${error})`);
     process.exit(1);
 }

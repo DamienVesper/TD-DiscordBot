@@ -65,8 +65,7 @@ export default abstract class Command implements ICommand, ICommandField {
 	    if ((commandFields.minArgs > commandFields.maxArgs) && (commandFields.maxArgs >= 0)) {
 	        // Throw a CommandException because the min arg count can't be greater than the max arg count
 	        throw new CommandException(`Min arg count can't exceed max arg count`);
-	    }
-	    else {
+	    } else {
 	        // Assign the min and max args variables as usual
 	        this.minArgs = commandFields.minArgs;
 	        this.maxArgs = commandFields.maxArgs;
@@ -207,8 +206,7 @@ export default abstract class Command implements ICommand, ICommandField {
 	            // Queue the current message for deletion
 	            await (this.deleteMsg(<Discord.Message> message[i], millis));
 	        }
-	    }
-	    else {
+	    } else {
 	        // Queue the message for deletion
 	        await (this.deleteMsg(<Discord.Message> message, millis));
 	    }
@@ -286,8 +284,7 @@ export default abstract class Command implements ICommand, ICommandField {
 
 	        // Return true because the user has permission to run the command
 	        return true;
-	    }
-	    else {
+	    } else {
 	        // Return false because the user previously ran the command and the timeout hasn't expired
 	        return false;
 	    }

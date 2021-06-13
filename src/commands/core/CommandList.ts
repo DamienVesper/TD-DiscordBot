@@ -64,13 +64,11 @@ export default class CommandList extends Command {
 
                 // Reply with only the commands in that category
                 await message.reply(`Commands in the category "${CommandCategory[validCat].toLowerCase()}": \`${this.cmdInterpreter.getRegisteredCommandList(validCat)}\``);
-            }
-            else {
+            } else {
                 // Warn that an invalid category was passed and suggest the valid options
                 await message.reply(`Sorry, but "${args[0].toLowerCase()}" is not a valid command category. The available categories are: \`${CommandCategory.values()}\`.`);
             }
-        }
-        else {
+        } else {
             // Send the full command list
             await message.reply(`Full command list: \`${this.cmdInterpreter.getRegisteredCommandList()}\``);
         }

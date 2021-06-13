@@ -49,8 +49,7 @@ export default class VIPManage extends Command {
         if (args[0].toLowerCase() === `give`) {
             userFound.perms.vip = true;
             userFound.save();
-        }
-        else {
+        } else {
             userFound.perms.vip = false;
             userFound.save();
         }

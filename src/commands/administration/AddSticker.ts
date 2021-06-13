@@ -69,8 +69,7 @@ export default class AddSticker extends Command {
             });
             newSticker.save();
             return message.reply(`:white_check_mark: Added unique sticker name **${stickerName1}** to User ${userFound.username} - URL: ${stickerURL}`);
-        }
-        else {
+        } else {
             return message.reply(`:x: That sticker name is not unique! Please use a different sticker name!`);
         }
     }

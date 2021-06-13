@@ -38,8 +38,7 @@ export default class ArrayUtil {
                 if (typeof expectedType === `string`) {
                     // Check if the object is an array of expectedType using typeOf and set the valid type boolean
                     isValidType = (typeof targetObj[i] === expectedType);
-                }
-                else {
+                } else {
                     // Check if the object is an array of expectedType using instanceof and set the valid type boolean
                     isValidType = (targetObj[i] instanceof expectedType);
                 }
@@ -53,8 +52,7 @@ export default class ArrayUtil {
 
             // Return true because the object is an array and every element is of the expected type
             return true;
-        }
-        else {
+        } else {
             // Immediately return false, as the object is not an array
             return false;
         }

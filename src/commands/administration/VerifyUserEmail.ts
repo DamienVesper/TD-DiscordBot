@@ -49,8 +49,7 @@ export default class VerifyUserEmail extends Command {
         if (args[0].toLowerCase() === `true`) {
             userFound.verified = true;
             userFound.save();
-        }
-        else {
+        } else {
             userFound.verified = false;
             userFound.save();
         }

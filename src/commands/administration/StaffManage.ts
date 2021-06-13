@@ -51,8 +51,7 @@ export default class StaffManage extends Command {
         if (args[0].toLowerCase() === `give`) {
             userFound.perms.staff = true;
             userFound.save();
-        }
-        else {
+        } else {
             userFound.perms.staff = false;
             userFound.save();
         }

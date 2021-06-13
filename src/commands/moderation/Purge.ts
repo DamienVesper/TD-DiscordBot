@@ -92,8 +92,7 @@ export default class Purge extends Command {
 	    messagesInChannel.forEach(async msg => {
 	        try {
 	            await msg.delete();
-	        }
-	        catch {
+	        } catch {
 	            null;
 	        }
 	    });

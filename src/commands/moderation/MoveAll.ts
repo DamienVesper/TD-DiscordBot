@@ -69,8 +69,7 @@ export default class MoveAll extends Command {
 	    originalChannel.members.forEach(member => {
 	        try {
 	            member.voice.setChannel(channelToMoveTo);
-	        }
-	        catch {
+	        } catch {
 	            null;
 	        }
 	    });

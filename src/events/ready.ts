@@ -50,8 +50,7 @@ bot.on(`ready`, async () => {
             const textChannel = channel as TextChannel;
             try {
                 textChannel.stopTyping();
-            }
-            catch {
+            } catch {
                 null;
             }
         }

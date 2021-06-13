@@ -254,8 +254,7 @@ export default class Interpreter {
 
 	                    // Report the argument excpetion to the user and suggest the correct usage
 	                    message.reply(`The command "${args[0]}" requires ${argInfo} argument(s), but the amount you supplied was ${args.length - 1}. The correct usage is \`${this.botClient.config.prefix}${execCom.usage}\`. Try your entry again, but properly this time!`);
-	                }
-	                else {
+	                } else {
 	                    // Report the generic error to the user
 	                    message.reply(`An error occurred while running command "${args[0]}". Error details: \`${error.name} - ${error.message}\`. Try again later.`);
 
@@ -276,8 +275,7 @@ export default class Interpreter {
 	                    await (message.channel.stopTyping());
 	                }
 	            });
-	    }
-	    else {
+	    } else {
 	        // No match, so warn the user that an invalid command was called
 	        // message.channel.send("ERROR: " + args[0] + " is an unknown command. Type " + "\"list\"" + " for a list of valid commands.");
 	        await message.reply(`ERROR: "${args[0]}" is an unknown command. Type \`${this.botClient.config.prefix}commandlist\` for a list of valid commands.`);
@@ -328,8 +326,7 @@ export default class Interpreter {
 	                    // Append the name of the current command onto the string
 	                    regCmd += (registeredCommands[i].name);
 	                }
-	            }
-	            else {
+	            } else {
 	                // Append the name of the current command onto the string
 	                regCmd += (registeredCommands[i].name);
 	            }

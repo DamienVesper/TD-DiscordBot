@@ -73,8 +73,7 @@ public async run (bot:Main, message:Discord.Message, args:string[], calledName:s
         firstUser.channel.moderators = await removeElement(firstUser.channel.moderators, userFound.username);
         firstUser.save();
         return message.reply(`:white_check_mark: Removed moderator ranking from **${userFound.username}** in channel **${firstUser.username}**`);
-    }
-    else {
+    } else {
         firstUser.channel.moderators.push(userFound.username);
         firstUser.save();
         return message.reply(`:white_check_mark: Gave moderator ranking to **${userFound.username}** in channel **${firstUser.username}**`);

@@ -44,8 +44,7 @@ module.exports.loadCommands = () => {
                     console.log(chalk.red(`[COMMAND] Skipping command - ${formattedBestCMD}`));
                     return;
                 }
-            }
-            catch {
+            } catch {
                 null;
             }
 
@@ -60,8 +59,7 @@ module.exports.loadCommands = () => {
             if (Reflect.has(new cmd.default(), `cmdInterpreter`)) {
                 // Create an instance of the command with the interpreter parameter
                 cmdObj = (new cmd.default(cmdConsole, cmdInterpreter));
-            }
-            else {
+            } else {
                 // Create a new instance normally
                 cmdObj = (new cmd.default(cmdConsole));
             }
@@ -84,8 +82,7 @@ module.exports.loadCommands = () => {
                 // Register the command with the interpreter
                 cmdInterpreter.register(cmdObj);
                 console.log(`[COMMAND] ${i + 1}: ${cmdObj.name} [${CommandCategory[cmdObj.category]}] - registered successfully!`);
-            }
-            catch (err) {
+            } catch (err) {
                 // Report the error
                 console.log(chalk.red(`[COMMAND/ERROR] ${i + 1}: ${cmdObj.name} [${CommandCategory[cmdObj.category]}] - ${err.name} caught while trying to register: ${err.message}`));
             }

@@ -61,8 +61,7 @@ export default class FakeDox extends Command {
         try {
             // Fetch the user by ID and assign it to the mentioned variable
             mentioned = (await botClient.fetchUser(args[0].replace(`<@`, ``).replace(`>`, ``).replace(`!`, ``)));
-        }
-        catch {
+        } catch {
             // Warn that the argument is invalid
             const bagArgWarn:Discord.Message = (await message.reply(`:x: Invalid argument passed! The correct usage is \`${botClient.config.prefix}${FakeDox.commandFields.usage}\``));
 

@@ -26,8 +26,7 @@ bot.on(`message`, async (message: Message) => {
         if (msgCont.startsWith(prefix.toLowerCase())) {
             // Slice the prefix out of the first array element
             messageArgs[0] = (await messageArgs[0].slice(prefix.length));
-        }
-        else {
+        } else {
             // Slice the first array element entirely
             messageArgs = (await messageArgs.slice(1, (messageArgs.length)));
         }

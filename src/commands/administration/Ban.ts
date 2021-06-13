@@ -87,8 +87,7 @@ export default class Ban extends Command {
             await fs.writeFileSync(`./data/banTimers.json`, JSON.stringify(banTimers, null, 4));
 
             message.reply(`:white_check_mark: **${userFound.username}** has been banned for **${time}** days!`);
-        }
-        else {
+        } else {
             const banTimers = JSON.parse(fs.readFileSync(`./data/banTimers.json`).toString());
             if (banTimers[`${userFound.username}`]) delete banTimers[`${userFound.username}`];
             await fs.writeFileSync(`./data/banTimers.json`, JSON.stringify(banTimers, null, 4));

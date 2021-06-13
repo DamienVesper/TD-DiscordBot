@@ -56,8 +56,7 @@ export default class RemoveSticker extends Command {
         if (result) {
             await Sticker.deleteOne({ stickerName: stickerName1 });
             return message.reply(`:white_check_mark: Removed sticker **${stickerName1}**`);
-        }
-        else {
+        } else {
             return message.reply(`:x: No sticker exists with that name!`);
         }
     }

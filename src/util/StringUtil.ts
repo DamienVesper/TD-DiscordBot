@@ -94,8 +94,7 @@ export default class StringUtil {
         if (tStr != null && tStr) {
             // String has a value tied to it or is simply blank
             return false;
-        }
-        else {
+        } else {
             // String is null
             return true;
         }
@@ -117,8 +116,7 @@ export default class StringUtil {
         if (tStr !== null && tStr && tStr.length >= 1) {
             // String has a value tied to it
             return false;
-        }
-        else {
+        } else {
             // String is null or blank
             return true;
         }

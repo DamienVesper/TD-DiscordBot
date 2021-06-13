@@ -78,8 +78,7 @@ export default class ScreenShare extends Command {
 
             // Reply with the link to the VC's screenshare in a MessageEmbed
             await (message.reply(ssLinkEmbed));
-        }
-        else {
+        } else {
             // Warn that the user isn't in a VC
             await (message.reply(`:x: This command can't be used because you are not in a VC.`));
         }

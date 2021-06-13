@@ -59,8 +59,7 @@ export default class DisconnectAll extends Command {
         originalChannel.members.forEach(member => {
             try {
                 member.voice.setChannel(null);
-            }
-            catch {
+            } catch {
                 null;
             }
         });

@@ -44,8 +44,7 @@ export default class UserInfo extends Command {
         if (args[0]) {
             if (await bot.fetchUser(args[0].replace(/[^\w\s]/gi, ``))) userForInfo = await bot.users.cache.get(args[0].replace(/[^\w\s]/gi, ``));
             else return message.reply(`:no_entry: The user ID you provided is invalid or the bot doesn't have that user cached!`);
-        }
-        else {
+        } else {
             userForInfo = message.author;
         }
 
@@ -97,8 +96,7 @@ export default class UserInfo extends Command {
 
         try {
             message.channel.send(infoEmbed);
-        }
-        catch {
+        } catch {
             await message.channel.send(`:no_entry: Embeds are not supported in this channel!`);
         }
     }
