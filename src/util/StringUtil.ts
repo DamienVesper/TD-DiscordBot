@@ -8,12 +8,12 @@ import MathUtil from "./MathUtil";
  * @author Spotlightsrule
  */
 export default class StringUtil {
-    /**
-     * Clones a string x amount of times
-     * @param cloneTarget The string to clone
-     * @param cloneCount The amount of times to clone the target
-     * @return <b>string</b> The new cloned string
-     */
+/**
+ * Clones a string x amount of times
+ * @param cloneTarget The string to clone
+ * @param cloneCount The amount of times to clone the target
+ * @return <b>string</b> The new cloned string
+ */
     public static cloneStr (cloneTarget:string, cloneCount:number):string {
         // Initialization
         let outStr:string = ``;
@@ -29,14 +29,14 @@ export default class StringUtil {
     }
 
     /**
-     * Check if a string equals any element in
-     * a given {@code ArrayList}. Useful in cases where
-     * a string can equal multiple objects.
-     * @param tStr The string to use in the operation
-     * @param equalTargets A list of all objects that the input string can equal
-     * @param ignoreCase Specifies whether or not to ignore case in the comparison operation
-     * @return <b>boolean</b> The status as to whether or not the input string equals any object in the passed {@code ArrayList}
-     */
+ * Check if a string equals any element in
+ * a given {@code ArrayList}. Useful in cases where
+ * a string can equal multiple objects.
+ * @param tStr The string to use in the operation
+ * @param equalTargets A list of all objects that the input string can equal
+ * @param ignoreCase Specifies whether or not to ignore case in the comparison operation
+ * @return <b>boolean</b> The status as to whether or not the input string equals any object in the passed {@code ArrayList}
+ */
     public static equalsAny (tStr:string, equalTargets:string[], ignoreCase:boolean):boolean {
         // Loop through the ArrayList of targets
         for (let i = 0; i < equalTargets.length; i++) {
@@ -59,14 +59,14 @@ export default class StringUtil {
     }
 
     /**
-     * Splice a string into an existing
-     * string at a given index
-     * @author GeeksForGeeks
-     * @param tStr The string to modify
-     * @param index The index to insert the new string at
-     * @param insertionStr The string to insert at the desired index
-     * @return <b>string</b> The new string that resulted from splicing the insertion string into the original
-     */
+ * Splice a string into an existing
+ * string at a given index
+ * @author GeeksForGeeks
+ * @param tStr The string to modify
+ * @param index The index to insert the new string at
+ * @param insertionStr The string to insert at the desired index
+ * @return <b>string</b> The new string that resulted from splicing the insertion string into the original
+ */
     public static insertAt (tStr:string, index:number, insertionStr:string):string {
         // Create a new string to insert the new element into
         let newString:string = null;
@@ -79,16 +79,16 @@ export default class StringUtil {
     }
 
     /**
-     * Check if a given string is of a
-     * null value. This is different from
-     * {@code isNullOrVoid}, as this method will
-     * return {@code true} if and ONLY IF the input
-     * string is null.
-     * @param tStr The target string
-     * @return <b>boolean</b> The status of whether or
-     * not the given string is null
-     * @see isNullOrVoid
-     */
+ * Check if a given string is of a
+ * null value. This is different from
+ * {@code isNullOrVoid}, as this method will
+ * return {@code true} if and ONLY IF the input
+ * string is null.
+ * @param tStr The target string
+ * @return <b>boolean</b> The status of whether or
+ * not the given string is null
+ * @see isNullOrVoid
+ */
     public static isNull (tStr:string):boolean {
         // Check if the string is null or undefined
         if (tStr != null && tStr) {
@@ -101,16 +101,16 @@ export default class StringUtil {
     }
 
     /**
-     * Check if a given string is of a
-     * null value or is simply blank. This is
-     * different from {@code isNull}, as this
-     * method will also return {@code true} if
-     * the input string is empty.
-     * @param tStr The target string
-     * @return <b>boolean</b> The status of whether or
-     * not the given string is null or empty
-     * @see isNull
-     */
+ * Check if a given string is of a
+ * null value or is simply blank. This is
+ * different from {@code isNull}, as this
+ * method will also return {@code true} if
+ * the input string is empty.
+ * @param tStr The target string
+ * @return <b>boolean</b> The status of whether or
+ * not the given string is null or empty
+ * @see isNull
+ */
     public static isNullOrVoid (tStr:string):boolean {
         // Check if the string is null, empty, or undefined
         if (tStr !== null && tStr && tStr.length >= 1) {
@@ -123,10 +123,10 @@ export default class StringUtil {
     }
 
     /**
-     * Add ordinal suffixes to numbers (1st, 2nd, 3rd, etc)
-     * @param numIn The number to add the suffix to
-     * @return <b>String</b> The resulting number with ordinal suffix
-     */
+ * Add ordinal suffixes to numbers (1st, 2nd, 3rd, etc)
+ * @param numIn The number to add the suffix to
+ * @return <b>String</b> The resulting number with ordinal suffix
+ */
     public static suffixOrdinalNum (numIn:number):string {
         // Set the list of valid ordinal suffixes
         const suffixList:string[] = [`th`, `st`, `nd`, `rd`, `th`, `th`, `th`, `th`, `th`, `th`];
@@ -145,11 +145,11 @@ export default class StringUtil {
     }
 
     /**
-     * Returns a phrase as an acronym
-     * (eg: hello world becomes hw)
-     * @param strIn The string to turn into an acronym
-     * @return <b>string<b> The resulting acronym
-     */
+ * Returns a phrase as an acronym
+ * (eg: hello world becomes hw)
+ * @param strIn The string to turn into an acronym
+ * @return <b>string<b> The resulting acronym
+ */
     public static toAcronym (strIn:string):string {
         // Split the string at each whitespace or space char
         const splitStr:string[] = strIn.split((/[\u0009\u000A\u000B\u000C\u000D\u0020\u0085\u00A0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u2028\u2029\u202F\u205F\u3000]/), -1);
@@ -171,11 +171,11 @@ export default class StringUtil {
     }
 
     /**
-     * Adds a zero to the beginning of a number if
-     * it's (10 < x < 0) or (0 < x < -10)
-     * @param inputNumber The number to add the prefix to
-     * @return <b>string</b> The input number, prefixed with a zero or not
-     */
+ * Adds a zero to the beginning of a number if
+ * it's (10 < x < 0) or (0 < x < -10)
+ * @param inputNumber The number to add the prefix to
+ * @return <b>string</b> The input number, prefixed with a zero or not
+ */
     public static zeroPrefix (inputNumber:number):string {
         // Convert the input number to a string
         let numStr:string = inputNumber.toString();

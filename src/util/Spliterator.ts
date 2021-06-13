@@ -4,13 +4,13 @@
  * @author Spotlightsrule
  */
 export default class Spliterator {
-    /**
-     * Splits a string at every whitespace
-     * character
-     * @param strIn The string to split
-     * @return <b>string[]</b> The resulting split array of strings
-     * @see https://regex101.com/r/DPheU4
-     */
+/**
+ * Splits a string at every whitespace
+ * character
+ * @param strIn The string to split
+ * @return <b>string[]</b> The resulting split array of strings
+ * @see https://regex101.com/r/DPheU4
+ */
     public static split (strIn:string):string[] {
         // Create an array to hold the split string
         const splitStr:string[] = [];
@@ -24,7 +24,7 @@ export default class Spliterator {
             let curMatcherFind:string = (matcherFind);
 
             // Check if the current matcher find is enclosed within balanced quotes or backticks
-            if (new RegExp(/([\"'`])(?:(?=(\\?))\2.)*?\1/g).test(curMatcherFind)) {
+            if (/([\"'`])(?:(?=(\\?))\2.)*?\1/g.test(curMatcherFind)) {
                 // Strip all quotes and backticks from the string
                 curMatcherFind = curMatcherFind.substring(1, (curMatcherFind.length - 1));
             }
