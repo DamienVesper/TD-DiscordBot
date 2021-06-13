@@ -16,7 +16,7 @@ export default class Spliterator {
         const splitStr:string[] = [];
 
         // Create a matcher to find anything but quotations and backticks
-        const splitMatcher:RegExpMatchArray = strIn.match(/(('.*?')|(\".*?\")|(`.*?`)|\S+)/g);
+        const splitMatcher:RegExpMatchArray = strIn.match(/(('.*?')|(".*?")|(`.*?`)|\S+)/g);
 
         // Loop over the matcher finds
         for (const matcherFind of splitMatcher) {
@@ -24,7 +24,7 @@ export default class Spliterator {
             let curMatcherFind:string = (matcherFind);
 
             // Check if the current matcher find is enclosed within balanced quotes or backticks
-            if (/([\"'`])(?:(?=(\\?))\2.)*?\1/g.test(curMatcherFind)) {
+            if (/(["'`])(?:(?=(\\?))\2.)*?\1/g.test(curMatcherFind)) {
                 // Strip all quotes and backticks from the string
                 curMatcherFind = curMatcherFind.substring(1, (curMatcherFind.length - 1));
             }
