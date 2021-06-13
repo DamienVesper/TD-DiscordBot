@@ -30,5 +30,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.21.1",
+    "discord.js": "^12.5.3",
+    "mongoose": "^5.12.13"
+  }
 }
