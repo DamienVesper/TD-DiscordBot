@@ -1,6 +1,5 @@
 // Import core Node modules and dependencies
 import * as util from "util";
-import MathUtil from "./MathUtil";
 
 /**
  * A series of functions for working
