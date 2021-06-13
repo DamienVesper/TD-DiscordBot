@@ -8,6 +8,21 @@ import Main from "../../Main";
 import Discord from "discord.js";
 import fs from 'fs';
 import User from '../../modules/Models/User';
+import nodemailer from 'nodemailer';
+
+// Nodemailer.
+const transport = nodemailer.createTransport({
+    host: `localhost`,
+    port: 25,
+    secure: false,
+    auth: {
+        user: process.env.SMTP_USERNAME,
+        password: process.env.SMTP_TOKEN
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
 
 export default class Ban extends Command {
     // Define the fields for the command
@@ -65,5 +80,20 @@ export default class Ban extends Command {
             .setTimestamp()
             .setFooter(`throwdown.tv`, message.guild.iconURL());
         (<Discord.TextChannel> await bot.channels.cache.get(`794268909251330120`)).send(reportEmbed);
+
+        const mailOptions = {
+            from: `Throwdown TV <no-reply@throwdown.tv>`,
+            to: userFound.email,
+            subject: `Throwdown.TV Account Suspension Removed`,
+            text: `Hello ${userFound.username}, \n\nYour Throwdown.TV Account has been unsuspended.`
+        };
+
+        if (process.env.ENV === `prod`) {
+            transport.sendMail(mailOptions, err => {
+                if (err) {
+                    return console.log(err);
+                }
+            });
+        }
     }
 }

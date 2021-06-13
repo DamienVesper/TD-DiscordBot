@@ -4,12 +4,27 @@ import { CommandCategory } from "../../modules/commandapi/CommandCategory";
 import Console from "../../modules/commandapi/interpreter/Console";
 import { CommandField } from "../../modules/commandapi/ICommandField";
 import Main from "../../Main";
+import nodemailer from 'nodemailer';
 
 // Import core Node modules and dependencies
 import Discord from "discord.js";
 import fs from 'fs';
 
 import User from '../../modules/Models/User';
+
+// Nodemailer.
+const transport = nodemailer.createTransport({
+    host: `localhost`,
+    port: 25,
+    secure: false,
+    auth: {
+        user: process.env.SMTP_USERNAME,
+        password: process.env.SMTP_TOKEN
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+});
 
 export default class Ban extends Command {
     // Define the fields for the command
@@ -97,5 +112,20 @@ export default class Ban extends Command {
         if (!time) reportEmbed.addField(`Time`, `Infinite`);
         if (reason) reportEmbed.addField(`Reason`, reason);
         (<Discord.TextChannel> await bot.channels.cache.get(`794268909251330120`)).send(reportEmbed);
+
+        const mailOptions = {
+            from: `Throwdown TV <no-reply@throwdown.tv>`,
+            to: userFound.email,
+            subject: `Throwdown.TV Account Suspended`,
+            text: `Hello ${userFound.username}, \n\nYour Throwdown.TV Account has been suspended due to policy violations. If you think this was a mistake, please contact us.`
+        };
+
+        if (process.env.ENV === `prod`) {
+            transport.sendMail(mailOptions, err => {
+                if (err) {
+                    return console.log(err);
+                }
+            });
+        }
     }
 }
