@@ -2,10 +2,9 @@
 import Command from "../../modules/commandapi/Command";
 import { CommandCategory } from "../../modules/commandapi/CommandCategory";
 import Console from "../../modules/commandapi/interpreter/Console";
-import ICommandField, { CommandField } from "../../modules/commandapi/ICommandField";
+import { CommandField } from "../../modules/commandapi/ICommandField";
 import Interpreter from "../../modules/commandapi/interpreter/Interpreter";
 import Main from "../../Main";
-import StringUtil from "../../util/StringUtil";
 
 // Import core Node modules and dependencies
 import Discord from "discord.js";
