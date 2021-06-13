@@ -1,8 +1,3 @@
-// Import core Node modules and dependencies
-import axios from 'axios';
-import * as Discord from 'discord.js';
-
-import fs from 'fs';
 import { eventHandler } from './events/EventLoader';
 import Main from './Main';
 
