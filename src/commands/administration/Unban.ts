@@ -2,16 +2,11 @@
 import Command from "../../modules/commandapi/Command";
 import { CommandCategory } from "../../modules/commandapi/CommandCategory";
 import Console from "../../modules/commandapi/interpreter/Console";
-import ICommandField, { CommandField } from "../../modules/commandapi/ICommandField";
+import { CommandField } from "../../modules/commandapi/ICommandField";
 import Main from "../../Main";
 // Import core Node modules and dependencies
-import Discord, { TextChannel, Message, Guild } from "discord.js";
+import Discord from "discord.js";
 import fs from 'fs';
-
-import mongodb from 'mongodb';
-import axios from 'axios';
-
-import mongoose from 'mongoose';
 import User from '../../modules/Models/User';
 
 export default class Ban extends Command {
@@ -46,6 +41,7 @@ export default class Ban extends Command {
     }
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
+        if (!args[0]) return message.reply(":x: Usage: `t!unban <username>`");
         const userFound: any = await User.findOne({ username: args[0].toLowerCase() });
         if (!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
 

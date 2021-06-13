@@ -2,19 +2,11 @@
 import Command from "../../modules/commandapi/Command";
 import { CommandCategory } from "../../modules/commandapi/CommandCategory";
 import Console from "../../modules/commandapi/interpreter/Console";
-import ICommandField, { CommandField } from "../../modules/commandapi/ICommandField";
+import { CommandField } from "../../modules/commandapi/ICommandField";
 import Main from "../../Main";
 // Import core Node modules and dependencies
-import Discord, { TextChannel, Message, Guild } from "discord.js";
-import fs from 'fs';
-
-import mongodb from 'mongodb';
-import axios from 'axios';
-
-import mongoose from 'mongoose';
+import Discord from "discord.js";
 import User from '../../modules/Models/User';
-import Sticker from '../../modules/Models/Sticker';
-import { userInfo } from "os";
 
 export default class FetchIPs extends Command {
     // Define the fields for the command
@@ -48,6 +40,7 @@ export default class FetchIPs extends Command {
     }
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
+        if (!args[0]) return message.reply(":x: Usage: `t!ip <username>`");
         // Assert the argument count
         super.assertArgCount(args.length, message);
 

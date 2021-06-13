@@ -2,19 +2,11 @@
 import Command from "../../modules/commandapi/Command";
 import { CommandCategory } from "../../modules/commandapi/CommandCategory";
 import Console from "../../modules/commandapi/interpreter/Console";
-import ICommandField, { CommandField } from "../../modules/commandapi/ICommandField";
+import { CommandField } from "../../modules/commandapi/ICommandField";
 import Main from "../../Main";
 // Import core Node modules and dependencies
-import Discord, { TextChannel, Message, Guild } from "discord.js";
-import fs from 'fs';
-
-import mongodb from 'mongodb';
-import axios from 'axios';
-
-import mongoose from 'mongoose';
+import Discord from "discord.js";
 import User from '../../modules/Models/User';
-import Sticker from '../../modules/Models/Sticker';
-import { userInfo } from "os";
 
 export default class FetchEmail extends Command {
     // Define the fields for the command
@@ -48,6 +40,7 @@ export default class FetchEmail extends Command {
     }
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
+        if (!args[0]) return message.reply(":x: Usage: `t!getemail <username>`");
         // Assert the argument count
         super.assertArgCount(args.length, message);
 
@@ -56,7 +49,6 @@ export default class FetchEmail extends Command {
         const userFound: any = await User.findOne({ username: args[0] });
         if (!userFound) return message.channel.send(`:x: The username you provided was invalid!`);
 
-        const email = userFound.email;
         message.reply(`:white_check_mark: The email address for user **${userFound.username}** is ||${userFound.email}||`);
     }
 }

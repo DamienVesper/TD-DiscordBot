@@ -43,6 +43,7 @@ export default class Ban extends Command {
     }
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
+        if (!args[0]) return message.reply(":x: Usage: `t!ban <username>`");
         let time;
         const userFound: any = await User.findOne({ username: args[0].toLowerCase() });
         if (!userFound) return message.channel.send(`:x: The username you provided was invalid!`);

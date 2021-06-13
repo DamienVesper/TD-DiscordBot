@@ -41,6 +41,7 @@ export default class AddSticker extends Command {
     }
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
+        if (!args[0]) return message.reply(":x: Usage: `t!sticker <username> <stickername> <stickerURL>`");
         // Assert the argument count
         super.assertArgCount(args.length, message);
 

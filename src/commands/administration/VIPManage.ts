@@ -2,16 +2,10 @@
 import Command from "../../modules/commandapi/Command";
 import { CommandCategory } from "../../modules/commandapi/CommandCategory";
 import Console from "../../modules/commandapi/interpreter/Console";
-import ICommandField, { CommandField } from "../../modules/commandapi/ICommandField";
+import { CommandField } from "../../modules/commandapi/ICommandField";
 import Main from "../../Main";
 // Import core Node modules and dependencies
-import Discord, { TextChannel, Message, Guild } from "discord.js";
-import fs from 'fs';
-
-import mongodb from 'mongodb';
-import axios from 'axios';
-
-import mongoose from 'mongoose';
+import Discord from "discord.js";
 import User from '../../modules/Models/User';
 
 export default class VIPManage extends Command {
@@ -46,12 +40,13 @@ export default class VIPManage extends Command {
     }
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
-        if (args[0].toLowerCase() !== `give` && args[0].toLowerCase() !== `take`) return message.reply(":x: Your first argument has to be \`give\` or \`take\`!");
+        if (!args[0]) return message.reply(":x: Usage: `t!vip <give|take> <username>`");
+        if (args[0].toLowerCase() !== `give` && args[0].toLowerCase() !== `take`) return message.reply(`:x: Your first argument has to be "give" or "take"!`);
 
         const userFound: any = await User.findOne({ username: args[1].toLowerCase() });
         if (!userFound) return message.channel.send(`:x: The username you provided was invalid or does not exist!`);
 
-        if (args[0].toLowerCase() == `give`) {
+        if (args[0].toLowerCase() === `give`) {
             userFound.perms.vip = true;
             userFound.save();
         }

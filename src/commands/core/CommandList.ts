@@ -33,7 +33,7 @@ export default class CommandList extends Command {
         false, // DELETE ON FINISH
         true, // SIMULATE TYPING
         3000, // SPAM TIMEOUT
-        [`allcommands`, `list`, `commands`] // ALIASES
+        [`allcommands`, `list`, `commands`, `help`] // ALIASES
     );
 
     // Set class variables

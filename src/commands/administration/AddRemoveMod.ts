@@ -41,6 +41,7 @@ constructor (cmdConsole:Console) {
 }
 
 public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
+    if (!args[0]) return message.reply(":x: Usage: `t!mod <streamer> <username>`");
     const firstUser: any = await User.findOne({ username: args[0] });
     if (!firstUser) return message.channel.send(`:x: The username you provided was invalid!`);
 
@@ -71,12 +72,12 @@ public async run (bot:Main, message:Discord.Message, args:string[], calledName:s
     if (firstUser.channel.moderators.includes(userFound.username)) {
         firstUser.channel.moderators = await removeElement(firstUser.channel.moderators, userFound.username);
         firstUser.save();
-        return message.reply(`:white_check_mark: Removed moderator ranking to **${userFound.username}** for channel **${firstUser.username}**`);
+        return message.reply(`:white_check_mark: Removed moderator ranking from **${userFound.username}** in channel **${firstUser.username}**`);
     }
     else {
         firstUser.channel.moderators.push(userFound.username);
         firstUser.save();
-        return message.reply(`:white_check_mark: Gave moderator ranking to **${userFound.username}** for channel **${firstUser.username}**`);
+        return message.reply(`:white_check_mark: Gave moderator ranking to **${userFound.username}** in channel **${firstUser.username}**`);
     }
 }
 }

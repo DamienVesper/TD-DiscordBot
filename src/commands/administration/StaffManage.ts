@@ -42,6 +42,7 @@ export default class StaffManage extends Command {
     }
 
     public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
+        if (!args[0]) return message.reply(":x: Usage: `t!staff <give|take> <username>`");
         if (args[0].toLowerCase() !== `give` && args[0].toLowerCase() !== `take`) return message.reply(`:x: Your first argument has to be \`give\` or \`take\`!`);
 
         const userFound: any = await User.findOne({ username: args[1].toLowerCase() });

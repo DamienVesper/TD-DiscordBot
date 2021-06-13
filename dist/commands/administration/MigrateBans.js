@@ -1,67 +1,42 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 // Import first-party classes
-import Command from "../../modules/commandapi/Command";
-import { CommandCategory } from "../../modules/commandapi/CommandCategory";
-import Console from "../../modules/commandapi/interpreter/Console";
-import ICommandField, { CommandField } from "../../modules/commandapi/ICommandField";
-import Main from "../../Main";
-// Import core Node modules and dependencies
-import Discord, { TextChannel, Message, Guild } from "discord.js";
-import fs from 'fs';
-
-export default class MigrateBans extends Command {
-    // Define the fields for the command
-    private static commandFields = new CommandField(
-        `migratebans`, // NAME
-        `Copies the bans from one guild to another`, // DESCRIPTION
-        `migratebans [destination guild ID] (another destination guild id)`, // USAGE - [] = MANDATORY () = OPTIONAL
-        [`migratebans 451248270409334796 637784721568563220`], // EXAMPLES
-        CommandCategory.ADMINISTRATION, // CATEGORY
-        1, // MIN ARGS
-        6, // MAX ARGS
-        [`BAN_MEMBERS`, `MANAGE_GUILD`], // REQUIRED PERMS
-        false, // BOT OWNER ONLY
-        false, // TRUSTED ONLY
-        [], // BLACKLISTED USERS
-        [], // WHITELISTED GUILDS
-        true, // DELETE ON FINISH
-        true, // SIMULATE TYPING
-        120000, // SPAM TIMEOUT
-        [`copybans`, `banmigration`, `mb`] // ALIASES
-    );
-
+const Command_1 = __importDefault(require("../../modules/commandapi/Command"));
+const CommandCategory_1 = require("../../modules/commandapi/CommandCategory");
+const ICommandField_1 = require("../../modules/commandapi/ICommandField");
+class MigrateBans extends Command_1.default {
     /**
      * Constructs a new instance of the "Test"
      * command class
      * @param cmdConsole The interpreter's console instance
      */
-    constructor (cmdConsole:Console) {
+    constructor(cmdConsole) {
         // Call the superclass with the command fields
         super(MigrateBans.commandFields, cmdConsole);
     }
-
-    public async run (bot:Main, message:Discord.Message, args:string[], calledName:string):Promise<any> {
+    async run(bot, message, args, calledName) {
         // Assert the argument count
         super.assertArgCount(args.length, message);
-
-        const AsyncForEachModule: any = require(`../util/AsyncForEach`);
-
-        const selfMember: Discord.GuildMember = await message.guild.members.cache.get(bot.user.id);
+        const AsyncForEachModule = require(`../util/AsyncForEach`);
+        const selfMember = await message.guild.members.cache.get(bot.user.id);
         if (!selfMember || !selfMember.hasPermission(`BAN_MEMBERS`)) {
             return message.reply(`:no_entry: I do not have permission to access this guilds banlist!`);
         }
-
         const psGuild = await bot.pulsarGuilds.get(message.guild.id);
         const thisBanList = await psGuild.banlist.getEntries();
         const successfulMigrations = [];
         const failedMigrations = [];
-
         if (args[0]) {
-            let i: number = 0;
-            await AsyncForEachModule.asyncForEach(args, async guildID => {
+            let i = 0;
+            await AsyncForEachModule.asyncForEach(args, async (guildID) => {
                 if (!await bot.pulsarGuilds.get(guildID)) {
                     failedMigrations.push(guildID);
                     return;
-                } else {
+                }
+                else {
                     const guild = await bot.pulsarGuilds.get(guildID);
                     if (!guild.member(message.author.id)) {
                         failedMigrations.push(guildID);
@@ -72,17 +47,15 @@ export default class MigrateBans extends Command {
                         failedMigrations.push(guildID);
                         return;
                     }
-                    await AsyncForEachModule.asyncForEach(thisBanList, async banListEntry => {
+                    await AsyncForEachModule.asyncForEach(thisBanList, async (banListEntry) => {
                         const banReason = banListEntry.reason || `No Ban Reason Provided`;
                         guild.ban(banListEntry.id, { days: 1, reason: `Pulsar Ban Migration - ${banReason}` });
                     });
                     successfulMigrations.push(guildID);
                 }
-
                 i++;
             });
         }
-
         if (args.length > 1 && successfulMigrations) {
             if (successfulMigrations.length == args.length) {
                 return message.reply(`:white_check_mark: Successfully migrated ${thisBanList.length} bans to all of the guilds provided!`);
@@ -104,3 +77,23 @@ export default class MigrateBans extends Command {
         }
     }
 }
+exports.default = MigrateBans;
+// Define the fields for the command
+MigrateBans.commandFields = new ICommandField_1.CommandField(`migratebans`, // NAME
+`Copies the bans from one guild to another`, // DESCRIPTION
+`migratebans [destination guild ID] (another destination guild id)`, // USAGE - [] = MANDATORY () = OPTIONAL
+[`migratebans 451248270409334796 637784721568563220`], // EXAMPLES
+CommandCategory_1.CommandCategory.ADMINISTRATION, // CATEGORY
+1, // MIN ARGS
+6, // MAX ARGS
+[`BAN_MEMBERS`, `MANAGE_GUILD`], // REQUIRED PERMS
+false, // BOT OWNER ONLY
+false, // TRUSTED ONLY
+[], // BLACKLISTED USERS
+[], // WHITELISTED GUILDS
+true, // DELETE ON FINISH
+true, // SIMULATE TYPING
+120000, // SPAM TIMEOUT
+[`copybans`, `banmigration`, `mb`] // ALIASES
+);
+//# sourceMappingURL=MigrateBans.js.map
