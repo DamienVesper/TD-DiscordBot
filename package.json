@@ -36,7 +36,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "discord.js": "^12.5.3",
-    "mongoose": "^5.12.13",
+    "mongoose": "^5.12.14",
     "nodemailer": "^6.6.1"
   }
 }
