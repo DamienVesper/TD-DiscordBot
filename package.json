@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/ThrowdownTV/Discord-Bot#readme",
   "devDependencies": {
-    "@types/node": "^15.12.5",
+    "@types/node": "^16.3.2",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
     "cross-env": "^7.0.3",
