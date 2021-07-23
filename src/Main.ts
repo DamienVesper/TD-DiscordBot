@@ -1,7 +1,6 @@
 // Import core Node modules and dependencies
 import Discord, { ClientOptions } from "discord.js";
 import Banlist from './modules/Banlist';
-import mongoose from 'mongoose';
 
 import { bot } from './index';
 
