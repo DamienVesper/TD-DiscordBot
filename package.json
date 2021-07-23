@@ -6,7 +6,6 @@
   "scripts": {
     "build": "tsc",
     "prod": "cross-env ENV=\"prod\" node ./build/index.js",
-    "dist": "yarn build && yarn dev",
     "dev": "cross-env ENV=\"dev\" node ./build/index.js",
     "dev:lint": "eslint . --fix --ext .ts"
   },
