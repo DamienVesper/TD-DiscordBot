@@ -35,38 +35,38 @@ async function getBanList (guildID: string): Promise<object[]> {
 
 // Simplifies the usage of the banlist making my life easier
 class Banlist {
-	guildID: string
+    guildID: string
 
-	constructor (serverID: string) {
-	    this.guildID = serverID;
-	}
+    constructor (serverID: string) {
+        this.guildID = serverID;
+    }
 
-	async getEntries (): Promise<object[]> {
-	    const returnObj = await getBanList(this.guildID);
-	    return returnObj;
-	}
+    async getEntries (): Promise<object[]> {
+        const returnObj = await getBanList(this.guildID);
+        return returnObj;
+    }
 
-	async isBanned (userID: string): Promise<boolean> {
-	    const banlist = await this.getEntries();
+    async isBanned (userID: string): Promise<boolean> {
+        const banlist = await this.getEntries();
 
-	    const foundEntry = false;
-	    const filteredList = await banlist.filter(obj => (<any> obj).id === userID);
+        const foundEntry = false;
+        const filteredList = await banlist.filter(obj => (<any> obj).id === userID);
 
-	    if (filteredList.length == 1) return true;
-	    else return false;
-	}
+        if (filteredList.length == 1) return true;
+        else return false;
+    }
 
-	async getBan (userID: string): Promise<object> {
-	    const banlist = await this.getEntries();
+    async getBan (userID: string): Promise<object> {
+        const banlist = await this.getEntries();
 
-	    const matchingBans = await banlist.filter((b: any) => b.id == userID);
+        const matchingBans = await banlist.filter((b: any) => b.id == userID);
 
-	    if (!matchingBans) return { found: false };
-	    else {
-	        (<any> matchingBans[0]).found = true;
-	        return matchingBans[0];
-	    }
-	}
+        if (!matchingBans) return { found: false };
+        else {
+            (<any> matchingBans[0]).found = true;
+            return matchingBans[0];
+        }
+    }
 }
 
 export = Banlist

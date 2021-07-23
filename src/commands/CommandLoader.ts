@@ -1,12 +1,10 @@
-import * as Discord from 'discord.js';
-import * as dotEnv from 'dotenv';
-import fs from 'fs';
+import * as path from 'path';
+
 import glob from 'glob';
-import path from 'path';
 import chalk from 'chalk';
 
 import { CommandCategory } from '../modules/commandapi/CommandCategory';
-import { bot, cmdInterpreter, cmdConsole } from '../index';
+import { cmdInterpreter, cmdConsole } from '../index';
 import Command from '../modules/commandapi/Command';
 
 const scriptName: string = path.basename(__filename).toString();
@@ -20,18 +18,20 @@ module.exports.loadCommands = () => {
     // let commandsToSkip:string[] = ["commandlist"]; // MUST BE IN LOWERCASE
     const commandsToSkip:string[] = [`test`]; // MUST BE IN LOWERCASE
 
-    glob(`${__dirname}/**/*.*`, { absolute: false }, (error, files) => {
+    glob(path.resolve(__dirname, `*.*`), { absolute: false }, (err: any, files: string[]) => {
+        if (err) throw err;
+
         files = files.filter(f => !f.endsWith(`.map`));
         if (files.length === 0) return console.log(`[WARNING] Unable to locate any commands. The bot won't be able to respond to requests.`);
         else console.log(chalk.yellow(`[COMMAND] Loading ${files.length} commands...`));
 
         let i:number = 0;
         files.forEach(async filePath => {
-            const fileRegex = new RegExp(/\/{0}([A-z-/\d]){1,100}([^A-z.ts]){1}/g); // converts the whole url path to just commandFileName.ts
-            const fileRegexJS = new RegExp(/\/{0}([A-z-/\d]){1,100}([^A-z.js]){1}/g);
+            const fileRegex = /\/{0}([A-z-/\d]){1,100}([^A-z.ts]){1}/g; // converts the whole url path to just commandFileName.ts
+            const fileRegexJS = /\/{0}([A-z-/\d]){1,100}([^A-z.js]){1}/g;
             const formattedBestCMD:string = null;
 
-            if (version == `ts`) filePath.replace(fileRegex, ``);
+            if (version === `ts`) filePath.replace(fileRegex, ``);
             else filePath.replace(fileRegexJS, ``);
             // Check if the current search directory is the folder for the command utilities
             if (filePath.toLowerCase().includes(`util`)) {
@@ -45,7 +45,7 @@ module.exports.loadCommands = () => {
                     return;
                 }
             } catch {
-                null;
+                return null;
             }
 
             const cmd = require(filePath);

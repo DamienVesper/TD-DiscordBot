@@ -6,10 +6,10 @@
  */
 export default class InterpreterException extends Error {
     /**
-	 * Constructs a new {@code InterpreterException}
-	 * @constructor
-	 * @param excMessage The message to output when this exception is thrown
-	 */
+     * Constructs a new {@code InterpreterException}
+     * @constructor
+     * @param excMessage The message to output when this exception is thrown
+     */
     constructor (excMessage:string) {
         // Call the superclass with the user provided error message
         super(excMessage);
